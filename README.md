@@ -1,2 +1,2 @@
 # perceptron
-A simple perceptron in java
+An ongoing simple perceptron project in java. Any ideas highly appreciated
