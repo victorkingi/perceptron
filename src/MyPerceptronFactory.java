@@ -1,11 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
-import java.util.Random;
 
-public class MyPerceptronFactory extends JPanel {
+public class MyPerceptronFactory extends JComponent {
     Perceptron p;
 
     Point[] points = new Point[500];
@@ -28,25 +24,17 @@ public class MyPerceptronFactory extends JPanel {
         }
     }
 
-    public void draw() {
-        JLabel label = new JLabel();
-        label.setBackground(Color.white);
-       // line(0, 0, width, height);
-        //draw line
+    public void draw(Graphics g) {
+        Graphics2D gd = (Graphics2D) g;
+        paint(g);
         for(Point pt : points) {
             float[] inputs = { pt.x, pt.y};
             int target = pt.label;
-            pt.show();
+            pt.paint(g);
             int guess = p.guess(inputs);
-            if(guess == target) {
-               // fill(0, 255, 0);
-                //fill green
-            } else {
-                //fill(255, 0, 0);
-                //fill red
-            }
-           // ellipse(pt.x, pt.y, 8, 8);
-            //draw ellipse
+            if(guess == target) gd.setPaint(Color.GREEN);
+            else gd.setPaint(Color.RED);
+            gd.fillOval((int)pt.x, (int)pt.y, 8, 8);
         }
 
         Point training = points[trainingIndex];
@@ -58,6 +46,12 @@ public class MyPerceptronFactory extends JPanel {
             trainingIndex = 0;
         }
 
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawLine(30, 20, 80, 90);
     }
 }
 

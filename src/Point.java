@@ -1,6 +1,7 @@
+import java.awt.*;
 import java.util.Random;
 
-public class Point {
+public class Point extends Canvas {
     float x;
     float y;
     int label;
@@ -17,15 +18,11 @@ public class Point {
         }
     }
 
-    public void show() {
-        if(label == 1) {
-           // fill(255);
-            //fill white
-        } else {
-            //fill(0);
-            // fill black
-        }
-        //ellipse(x, y, 16, 16);
-        //draw ellipse
+    @Override
+    public void paint(Graphics g) {
+        Graphics2D gd = (Graphics2D) g;
+        if (label == 1) gd.setPaint(new Color(255, 255, 255));
+        else gd.setPaint(new Color(0, 0, 0));
+        g.fillOval((int)x, (int)y, 16, 16);
     }
 }
