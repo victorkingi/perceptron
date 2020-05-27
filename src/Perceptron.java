@@ -3,18 +3,20 @@ import java.util.List;
 import java.util.Random;
 
 public class Perceptron {
-    float[] weights = new float[2];
-    float lr = 0.1f;
+    private final float[] weights;
+    private final float lr;
 
     Perceptron() {
+        weights = new float[2];
+        lr = 0.1f;
+        List<Integer> random = new ArrayList<>();
+        random.add(-1);
+        random.add(1);
         for (int i = 0; i < weights.length; i++) {
-            List<Integer> random = new ArrayList<>();
-            random.add(-1);
-            random.add(1);
             weights[i] = random.get(new Random().nextInt(random.size()));
         }
     }
-    public int sign(float n) {
+    private int sign(final float n) {
         if (n >= 0) {
             return 1;
         } else {
@@ -23,16 +25,15 @@ public class Perceptron {
 
     }
 
-    public int guess(float[] inputs) {
+    protected int guess(final float[] inputs) {
         float sum = 0;
         for (int i = 0; i < weights.length; i++) {
             sum += inputs[i] * weights[i];
         }
-        int output = sign(sum);
-        return output;
+        return sign(sum);
     }
 
-    public void train(float[] inputs, int target) {
+    protected void train(final float[] inputs, final int target) {
         int guess = guess(inputs);
         int error = target - guess;
 
