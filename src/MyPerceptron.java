@@ -13,5 +13,6 @@ public class MyPerceptron extends JFrame {
         setSize(800, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 }

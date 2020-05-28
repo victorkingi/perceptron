@@ -38,7 +38,6 @@ class Execution extends JPanel {
             else g2d.setPaint(Color.RED);
             g2d.fillOval(pt.getX(), pt.getY(), 16, 16);
         }
-        myTrain();
     }
 
     private void myTrain() {
@@ -56,8 +55,11 @@ class Execution extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         doDrawing(g);
+        for (int i = 0; i < 10; i++) {
+            myTrain();
+        }
     }
 }
