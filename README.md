@@ -1,2 +1,5 @@
 # perceptron
-An ongoing simple perceptron project in java. Any ideas highly appreciated
+
+## A simple perceptron project in java.
+
+This is just to help beginner AI enthusiasts understand how neural networks work
